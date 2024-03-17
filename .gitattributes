@@ -1,0 +1,8 @@
+go.sum -diff -merge
+go.sum linguist-generated=true
+*.pb.go -diff -merge
+*.pb.go linguist-generated=true
+*.sql.go -diff -merge
+*.sql.go linguist-generated=true
+*_templ.go -diff -merge
+*_templ.go linguist-generated=true
