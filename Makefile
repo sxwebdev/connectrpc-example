@@ -14,35 +14,8 @@ build:
 watch:
 	air -c .air.toml
 
-markdown:
-	go run -v ./cmd/app --markdown --file ENVS.md
-
-validate:
-	go run -v ./cmd/app --validate
-
 fmt:
 	gofumpt -l -w .
-
-upgrade:
-	GOWORK=off go-mod-upgrade
-	go mod tidy
-
-.PHONY: genproto
-genproto:
-	rm -rf pb/*
-	rm -rf gen
-	protoc \
-	--go_opt=module=$(MODULE) \
-	--go-grpc_opt=module=$(MODULE) \
-	--go_out=. \
-	--go-grpc_out=. \
-	$(PROTO_FILES)
-
-buf:
-	rm -rf pb/*
-	buf generate --path ./schema/proto \
-		--config ./schema/proto/buf.yaml \
-		--template ./schema/proto/buf.gen.yaml
 
 gen:
 	rm -rf pb/*
